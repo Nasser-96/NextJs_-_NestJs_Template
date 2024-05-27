@@ -7,7 +7,7 @@ export default function ReturnResponse({
   success,
 }: ReturnResponseType<any>) {
   return {
-    is_successful: error_msg && !is_successful ? false : true,
+    is_successful: error_msg || !is_successful ? false : true,
     response: response,
     error_msg: error_msg ? error_msg : '',
     success: success ? success : '',
