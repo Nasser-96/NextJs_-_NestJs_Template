@@ -7,9 +7,17 @@ import {
 } from '@nestjs/common';
 import ReturnResponse from './helper/returnResponse';
 import { SocketIOAdapter } from './socket/socket.adapter';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({ logger: true }),
+  );
+
   app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
