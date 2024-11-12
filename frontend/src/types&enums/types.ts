@@ -9,3 +9,7 @@ export type LocalStorageUserDataType = {
   token?: string;
   username?: string;
 };
+
+export type DynamicValuesType = {
+  [key: string]: number | string | boolean | string[] | number[] | unknown;
+};
